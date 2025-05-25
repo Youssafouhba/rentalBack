@@ -1,0 +1,79 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="local">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="code" type="VARCHAR(500)"/>
+        <column name="label" type="VARCHAR(500)"/>
+        <column name="adresse" type="VARCHAR(500)"/>
+        <column name="description" type="VARCHAR(500)"/>
+        <column name="montant_mensuel" type="NUMERIC"/>
+
+        <column name="type_locataire_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="locataire_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="statut_local_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="local"
+              baseColumnNames="type_locataire_id"
+              referencedTableName="type_locataire"
+              referencedColumnNames="id"
+              constraintName="fk_local_type_locataire"/>
+      <addForeignKeyConstraint
+              baseTableName="local"
+              baseColumnNames="locataire_id"
+              referencedTableName="locataire"
+              referencedColumnNames="id"
+              constraintName="fk_local_locataire"/>
+      <addForeignKeyConstraint
+              baseTableName="local"
+              baseColumnNames="statut_local_id"
+              referencedTableName="statut_local"
+              referencedColumnNames="id"
+              constraintName="fk_local_statut_local"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="local_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/locaux/Local.csv"
+            tableName="local">
+      <column name="id" type="NUMERIC"/>
+          <column name="code" type="STRING"/>
+          <column name="label" type="STRING"/>
+          <column name="adresse" type="STRING"/>
+          <column name="description" type="STRING"/>
+          <column name="montant_mensuel" type="NUMERIC"/>
+        <column name="type_locataire" type="BIGINT"/>
+        <column name="locataire" type="BIGINT"/>
+        <column name="statut_local" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

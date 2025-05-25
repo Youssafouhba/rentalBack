@@ -1,0 +1,1084 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /statutLocals:
+    get:
+      summary: List all statutLocals
+      operationId: listStatutLocals
+      tags:
+        - statutLocals
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of statutLocals
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/StatutLocals'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a statutLocal
+      operationId: createStatutLocals
+      tags:
+        - statutLocals
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /statutLocals/{statutLocalId}:
+    get:
+      summary: Info for a specific statutLocal
+      operationId: showStatutLocalById
+      tags:
+        - statutLocals
+      parameters:
+        - name: statutLocalId
+          in: path
+          required: true
+          description: The id of the statutLocal to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/StatutLocals'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locataires:
+    get:
+      summary: List all locataires
+      operationId: listLocataires
+      tags:
+        - locataires
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of locataires
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Locataires'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a locataire
+      operationId: createLocataires
+      tags:
+        - locataires
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locataires/{locataireId}:
+    get:
+      summary: Info for a specific locataire
+      operationId: showLocataireById
+      tags:
+        - locataires
+      parameters:
+        - name: locataireId
+          in: path
+          required: true
+          description: The id of the locataire to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Locataires'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /typeLocataires:
+    get:
+      summary: List all typeLocataires
+      operationId: listTypeLocataires
+      tags:
+        - typeLocataires
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of typeLocataires
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/TypeLocataires'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a typeLocataire
+      operationId: createTypeLocataires
+      tags:
+        - typeLocataires
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /typeLocataires/{typeLocataireId}:
+    get:
+      summary: Info for a specific typeLocataire
+      operationId: showTypeLocataireById
+      tags:
+        - typeLocataires
+      parameters:
+        - name: typeLocataireId
+          in: path
+          required: true
+          description: The id of the typeLocataire to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/TypeLocataires'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locations:
+    get:
+      summary: List all locations
+      operationId: listLocations
+      tags:
+        - locations
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of locations
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Locations'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a location
+      operationId: createLocations
+      tags:
+        - locations
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locations/{locationId}:
+    get:
+      summary: Info for a specific location
+      operationId: showLocationById
+      tags:
+        - locations
+      parameters:
+        - name: locationId
+          in: path
+          required: true
+          description: The id of the location to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Locations'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /modePaiements:
+    get:
+      summary: List all modePaiements
+      operationId: listModePaiements
+      tags:
+        - modePaiements
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of modePaiements
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/ModePaiements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a modePaiement
+      operationId: createModePaiements
+      tags:
+        - modePaiements
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /modePaiements/{modePaiementId}:
+    get:
+      summary: Info for a specific modePaiement
+      operationId: showModePaiementById
+      tags:
+        - modePaiements
+      parameters:
+        - name: modePaiementId
+          in: path
+          required: true
+          description: The id of the modePaiement to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/ModePaiements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /caisses:
+    get:
+      summary: List all caisses
+      operationId: listCaisses
+      tags:
+        - caisses
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of caisses
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Caisses'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a caisse
+      operationId: createCaisses
+      tags:
+        - caisses
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /caisses/{caisseId}:
+    get:
+      summary: Info for a specific caisse
+      operationId: showCaisseById
+      tags:
+        - caisses
+      parameters:
+        - name: caisseId
+          in: path
+          required: true
+          description: The id of the caisse to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Caisses'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /transactions:
+    get:
+      summary: List all transactions
+      operationId: listTransactions
+      tags:
+        - transactions
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of transactions
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Transactions'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a transaction
+      operationId: createTransactions
+      tags:
+        - transactions
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /transactions/{transactionId}:
+    get:
+      summary: Info for a specific transaction
+      operationId: showTransactionById
+      tags:
+        - transactions
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: The id of the transaction to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Transactions'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /banques:
+    get:
+      summary: List all banques
+      operationId: listBanques
+      tags:
+        - banques
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of banques
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Banques'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a banque
+      operationId: createBanques
+      tags:
+        - banques
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /banques/{banqueId}:
+    get:
+      summary: Info for a specific banque
+      operationId: showBanqueById
+      tags:
+        - banques
+      parameters:
+        - name: banqueId
+          in: path
+          required: true
+          description: The id of the banque to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Banques'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /typePaiements:
+    get:
+      summary: List all typePaiements
+      operationId: listTypePaiements
+      tags:
+        - typePaiements
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of typePaiements
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/TypePaiements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a typePaiement
+      operationId: createTypePaiements
+      tags:
+        - typePaiements
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /typePaiements/{typePaiementId}:
+    get:
+      summary: Info for a specific typePaiement
+      operationId: showTypePaiementById
+      tags:
+        - typePaiements
+      parameters:
+        - name: typePaiementId
+          in: path
+          required: true
+          description: The id of the typePaiement to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/TypePaiements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locals:
+    get:
+      summary: List all locals
+      operationId: listLocals
+      tags:
+        - locals
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of locals
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Locals'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a local
+      operationId: createLocals
+      tags:
+        - locals
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locals/{localId}:
+    get:
+      summary: Info for a specific local
+      operationId: showLocalById
+      tags:
+        - locals
+      parameters:
+        - name: localId
+          in: path
+          required: true
+          description: The id of the local to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Locals'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /comptes:
+    get:
+      summary: List all comptes
+      operationId: listComptes
+      tags:
+        - comptes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of comptes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Comptes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a compte
+      operationId: createComptes
+      tags:
+        - comptes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /comptes/{compteId}:
+    get:
+      summary: Info for a specific compte
+      operationId: showCompteById
+      tags:
+        - comptes
+      parameters:
+        - name: compteId
+          in: path
+          required: true
+          description: The id of the compte to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Comptes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /charges:
+    get:
+      summary: List all charges
+      operationId: listCharges
+      tags:
+        - charges
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of charges
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Charges'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a charge
+      operationId: createCharges
+      tags:
+        - charges
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /charges/{chargeId}:
+    get:
+      summary: Info for a specific charge
+      operationId: showChargeById
+      tags:
+        - charges
+      parameters:
+        - name: chargeId
+          in: path
+          required: true
+          description: The id of the charge to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Charges'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /CompteInstantanees:
+    get:
+      summary: List all CompteInstantanees
+      operationId: listCompteInstantanees
+      tags:
+        - CompteInstantanees
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of CompteInstantanees
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/CompteInstantanees'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a CompteInstantanee
+      operationId: createCompteInstantanees
+      tags:
+        - CompteInstantanees
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /CompteInstantanees/{CompteInstantaneeId}:
+    get:
+      summary: Info for a specific CompteInstantanee
+      operationId: showCompteInstantaneeById
+      tags:
+        - CompteInstantanees
+      parameters:
+        - name: CompteInstantaneeId
+          in: path
+          required: true
+          description: The id of the CompteInstantanee to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/CompteInstantanees'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+
+
+definitions:
+  StatutLocal:
+    type: "object"
+    required:
+      - id
+      - indexation
+      - code
+      - label
+      - style
+      - color
+    properties:
+      id:
+        type: int
+      indexation:
+        type: int
+      code:
+        type: string
+      label:
+        type: string
+      style:
+        type: string
+      color:
+        type: string
+  StatutLocals:
+    type: array
+    items:
+      $ref: '#/definitions/StatutLocal'
+  Locataire:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+      - nom
+      - prenom
+      - dateCreation
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+      nom:
+        type: string
+      prenom:
+        type: string
+      dateCreation:
+        type: date
+  Locataires:
+    type: array
+    items:
+      $ref: '#/definitions/Locataire'
+  TypeLocataire:
+    type: "object"
+    required:
+      - id
+      - indexation
+      - code
+      - label
+      - style
+      - color
+    properties:
+      id:
+        type: int
+      indexation:
+        type: int
+      code:
+        type: string
+      label:
+        type: string
+      style:
+        type: string
+      color:
+        type: string
+  TypeLocataires:
+    type: array
+    items:
+      $ref: '#/definitions/TypeLocataire'
+  Location:
+    type: "object"
+    required:
+      - id
+      - code
+      - dateCreation
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      dateCreation:
+        type: date
+  Locations:
+    type: array
+    items:
+      $ref: '#/definitions/Location'
+  ModePaiement:
+    type: "object"
+    required:
+      - id
+      - indexation
+      - code
+      - label
+      - style
+      - color
+    properties:
+      id:
+        type: int
+      indexation:
+        type: int
+      code:
+        type: string
+      label:
+        type: string
+      style:
+        type: string
+      color:
+        type: string
+  ModePaiements:
+    type: array
+    items:
+      $ref: '#/definitions/ModePaiement'
+  Caisse:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+      - solde
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+      solde:
+        type: number
+  Caisses:
+    type: array
+    items:
+      $ref: '#/definitions/Caisse'
+  Transaction:
+    type: "object"
+    required:
+      - id
+      - date
+      - montant
+      - description
+    properties:
+      id:
+        type: int
+      date:
+        type: date
+      montant:
+        type: number
+      description:
+        type: string
+  Transactions:
+    type: array
+    items:
+      $ref: '#/definitions/Transaction'
+  Banque:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+      - solde
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+      solde:
+        type: number
+  Banques:
+    type: array
+    items:
+      $ref: '#/definitions/Banque'
+  TypePaiement:
+    type: "object"
+    required:
+      - id
+      - indexation
+      - code
+      - label
+      - style
+      - color
+    properties:
+      id:
+        type: int
+      indexation:
+        type: int
+      code:
+        type: string
+      label:
+        type: string
+      style:
+        type: string
+      color:
+        type: string
+  TypePaiements:
+    type: array
+    items:
+      $ref: '#/definitions/TypePaiement'
+  Local:
+    type: "object"
+    required:
+      - id
+      - code
+      - label
+      - adresse
+      - description
+      - montantMensuel
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      label:
+        type: string
+      adresse:
+        type: string
+      description:
+        type: string
+      montantMensuel:
+        type: number
+  Locals:
+    type: array
+    items:
+      $ref: '#/definitions/Local'
+  Compte:
+    type: "object"
+    required:
+      - id
+      - rib
+      - solde
+    properties:
+      id:
+        type: int
+      rib:
+        type: string
+      solde:
+        type: number
+  Comptes:
+    type: array
+    items:
+      $ref: '#/definitions/Compte'
+  Charge:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+      - montant
+      - date
+      - description
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+      montant:
+        type: number
+      date:
+        type: date
+      description:
+        type: string
+  Charges:
+    type: array
+    items:
+      $ref: '#/definitions/Charge'
+  CompteInstantanee:
+    type: "object"
+    required:
+      - id
+      - rib
+      - solde
+    properties:
+      id:
+        type: int
+      rib:
+        type: string
+      solde:
+        type: number
+  CompteInstantanees:
+    type: array
+    items:
+      $ref: '#/definitions/CompteInstantanee'
+
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

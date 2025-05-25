@@ -1,0 +1,20 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+            <include file="classpath:db/migration/changelog/locataire/StatutLocal.xml"/>
+        <include file="classpath:db/migration/changelog/locataire/Locataire.xml"/>
+        <include file="classpath:db/migration/changelog/locataire/TypeLocataire.xml"/>
+        <include file="classpath:db/migration/changelog/locataire/Location.xml"/>
+        <include file="classpath:db/migration/changelog/locataire/ModePaiement.xml"/>
+        <include file="classpath:db/migration/changelog/finance/Caisse.xml"/>
+        <include file="classpath:db/migration/changelog/locataire/Transaction.xml"/>
+        <include file="classpath:db/migration/changelog/finance/Banque.xml"/>
+        <include file="classpath:db/migration/changelog/locataire/TypePaiement.xml"/>
+        <include file="classpath:db/migration/changelog/locaux/Local.xml"/>
+        <include file="classpath:db/migration/changelog/finance/Compte.xml"/>
+        <include file="classpath:db/migration/changelog/finance/Charge.xml"/>
+        <include file="classpath:db/migration/changelog/finance/CompteInstantanee.xml"/>
+
+</databaseChangeLog>

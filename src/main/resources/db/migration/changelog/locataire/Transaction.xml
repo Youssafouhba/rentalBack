@@ -1,0 +1,85 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="transaction">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="date" type="TIMESTAMP"/>
+        <column name="montant" type="NUMERIC"/>
+        <column name="description" type="VARCHAR(500)"/>
+
+        <column name="mode_paiement_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="type_paiement_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="compte_source_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="compte_destination_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="transaction"
+              baseColumnNames="mode_paiement_id"
+              referencedTableName="mode_paiement"
+              referencedColumnNames="id"
+              constraintName="fk_transaction_mode_paiement"/>
+      <addForeignKeyConstraint
+              baseTableName="transaction"
+              baseColumnNames="type_paiement_id"
+              referencedTableName="type_paiement"
+              referencedColumnNames="id"
+              constraintName="fk_transaction_type_paiement"/>
+      <addForeignKeyConstraint
+              baseTableName="transaction"
+              baseColumnNames="compte_source_id"
+              referencedTableName="compte_source"
+              referencedColumnNames="id"
+              constraintName="fk_transaction_compte_source"/>
+      <addForeignKeyConstraint
+              baseTableName="transaction"
+              baseColumnNames="compte_destination_id"
+              referencedTableName="compte_destination"
+              referencedColumnNames="id"
+              constraintName="fk_transaction_compte_destination"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="transaction_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/locataire/Transaction.csv"
+            tableName="transaction">
+      <column name="id" type="NUMERIC"/>
+          <column name="date" type="TIMESTAMP"/>
+          <column name="montant" type="NUMERIC"/>
+          <column name="description" type="STRING"/>
+        <column name="mode_paiement" type="BIGINT"/>
+        <column name="type_paiement" type="BIGINT"/>
+        <column name="compte_source" type="BIGINT"/>
+        <column name="compte_destination" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>
